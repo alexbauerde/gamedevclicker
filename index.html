@@ -1,0 +1,133 @@
+<html ng-app="gdcApp">
+<!-- test -->
+<head>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+
+    <script src="app.js"></script>
+    <script src="controller/AppController.js"></script>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+</head>
+
+<body ng-controller="appCtrl">
+    <!-- HEADER 
+=================================-->
+    <div class="jumbotron text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col col-lg-12 col-sm-12">
+                    <h1>GameDevClicker</h1>
+                    <p>Welcome to Alpha</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /header container-->
+
+
+
+    <!-- CONTENT
+=================================-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="panel panel-default light-font">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Development</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="gdc-center">+ {{ player.lpd }} <i class="fa fa-code"></i> / develop</span>
+                                <div class="progress">
+                                    <div id="dev-progress-bar" class="progress-bar"></div>
+                                </div>
+                                <button id='btnDevelop' ng-disabled='player.energy == 0' ng-click="develop()" class="btn btn-primary gdc-center">Develop new lines</button>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="gdc-center">{{ player.energy }}/{{ player.maxEnergy  }}  energy</span>
+                                <div class="progress">
+                                    <div id="rest-progress-bar" class="progress-bar"></div>
+                                </div>
+                                <button id='btnRest' ng-disabled='player.energy == player.maxEnergy' ng-click="rest()" class="btn btn-primary gdc-center">Take a rest</button>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div>
+                                    <span>Current lines: <b>{{ player.lines }}</b></span>
+                                    <br/>
+                                    <span>Current money: <b>{{ player.money }}</b></span>
+                                    <br/>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Buyables</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#games-tab" role="tab" data-toggle="tab">Games</a>
+                            </li>
+                            <li><a href="#developer-tab" role="tab" data-toggle="tab">Developer</a>
+                            </li>
+                            <li><a href="#upgrades-stuff-tab" role="tab" data-toggle="tab">Upgrades</a>
+                            </li>
+                        </ul>
+
+                        <div class='tab-content'>
+                            <div class='tab-pane active' id='games-tab'>
+                                <div id="products" class="well">
+                                    <!--h5>Products</h5-->
+                                    <div id="{{ product.id }}" ng-repeat="product in products" class="product buyable" data-original-title="" title="">
+                                        <div class="content">
+                                            <div class="title"><span>({{ product.amount }}) </span>{{ product.name }}</div>
+                                            <div class="costs"><i class="fa fa-code" style="color:black; padding-right: 5px;"></i>{{ product.baseCosts }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='tab-pane' id='developer-tab'>
+                                <div id="employees" class="well">
+                                    <!--h5>Employees</h5-->
+                                </div>
+                            </div>
+                            <div class='tab-pane' id='upgrades-stuff-tab'>
+                                <div id="upgrades" class="well">
+                                    <!--h5>Upgrades</h5-->
+                                    <div id="{{ product.id }}" ng-repeat="upgrade in upgrades" class="upgrade buyable" data-original-title="" title="">
+                                        <div class="content">
+                                            <div class="title">{{ upgrade.name }}</div>
+                                            <div class="description">
+                                                {{ upgrade.description }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /CONTENT ============-->
+
+</body>
+
+</html>

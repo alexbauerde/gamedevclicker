@@ -1,0 +1,12 @@
+{
+    "name": "gdc-mean",
+    "version": "0.0.1",
+    "description": "Physics-like animations for pretty particles",
+    "dependencies": {
+        "angular": "latest",
+        "jquery": "latest",
+        "moment": "latest",
+        "bootstrap": "latest",
+        "fontawesome": "latest"
+    }
+}
